@@ -3,7 +3,7 @@
 
 def canUnlockAll(boxes):
     if boxes is None:
-        return False
+        return True
     # loop through each box (index)
     for x in range(1, len(boxes) - 1):
         # Make list of all keys
