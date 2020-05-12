@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 """ minOperations function """
 
+
 def minOperations(n):
     """ finds the minimum number of copy/paste operations """
     result = 0
@@ -8,4 +9,4 @@ def minOperations(n):
         while n % i == 0:
             result += i
             n = n / i
-    return result;
+    return result
