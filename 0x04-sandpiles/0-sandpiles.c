@@ -28,11 +28,11 @@ static void print_grid(int grid[3][3])
  */
 void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 {
-	int i, j, count, loop = 1, uneven = 0;
+	int i, j, uneven = 0;
 
-	while (loop == 1)
+	while (1)
 	{
-		uneven = count = 0;
+		uneven = 0;
 		for (i = 0; i < 3; i++)
 			for (j = 0; j < 3; j++)
 			{
@@ -59,10 +59,7 @@ void sandpiles_sum(int grid1[3][3], int grid2[3][3])
 						grid2[i - 1][j] += 1;
 					if (j > 0)
 						grid2[i][j - 1] += 1;
-					count += 1;
 				}
 			}
-		if (count == 0)
-			uneven = 0;
 	}
 }
