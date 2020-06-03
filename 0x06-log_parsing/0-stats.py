@@ -16,13 +16,16 @@ def printer():
 if __name__ == "__main__":
     try:
         for line in sys.stdin:
-            if count == 10:
-                printer()
-                count = 0
-            splt = line.split()
-            size += int(splt[8])
-            status[int(splt[7])] += 1
-            count = count + 1
+            try:
+                if count == 10:
+                    printer()
+                    count = 0
+                splt = line.split()
+                size += int(splt[8])
+                status[int(splt[7])] += 1
+                count = count + 1
+            except:
+                sys.exit()
     except KeyboardInterrupt:
         printer()
         raise
