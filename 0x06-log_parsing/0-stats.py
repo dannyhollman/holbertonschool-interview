@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 """ parse log and print status codes """
 import sys
-from signal import signal, SIGINT
-
 
 count = 0
 size = 0
@@ -15,19 +13,16 @@ def printer():
         if status[x] != 0:
             print(str(x) + ": " + str(status[x]))
 
-
-def handler(signum, stack):
-    printer()
-    raise
-
-signal(SIGINT, handler)
-
 if __name__ == "__main__":
-    for line in sys.stdin:
-        if count == 10:
-            printer()
-            count = 0
-        splt = line.split()
-        size += int(splt[8])
-        status[int(splt[7])] += 1
-        count = count + 1
+    try:
+        for line in sys.stdin:
+            if count == 10:
+                printer()
+                count = 0
+            splt = line.split()
+            size += int(splt[8])
+            status[int(splt[7])] += 1
+            count = count + 1
+    except KeyboardInterrupt:
+        printer()
+        raise
