@@ -4,9 +4,8 @@
 
 def validUTF8(data):
     """ determines if bytes represent valid UTF-8 """
-    for x in data:
-        try:
-            bytes([x])
-        except:
-            return False
+    try:
+        bytes(data)
+    except:
+        return False
     return True
