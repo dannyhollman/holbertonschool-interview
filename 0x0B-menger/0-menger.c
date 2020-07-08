@@ -9,6 +9,9 @@ void menger(int level)
 	int i, j, k, l;
 	char print;
 
+	if (level < 0)
+		return;
+
 	for (i = 0; i < pow(3, level); i++)
 	{
 		for (j = 0; j < pow(3, level); j++)
