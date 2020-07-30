@@ -47,6 +47,7 @@ def nQueens(board, col, n):
             board[row][col] = 0
     return stat
 
+
 def main():
     """ main function """
     if len(sys.argv) != 2:
