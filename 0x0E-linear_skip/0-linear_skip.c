@@ -31,6 +31,7 @@ skiplist_t *linear_skip(skiplist_t *list, int value)
 				end = end->next;
 			printf("Value found between indexes [%lu] and [%lu]\n",
 					express->index, end->index);
+			break;
 		}
 		prev = express;
 		express = express->express;
