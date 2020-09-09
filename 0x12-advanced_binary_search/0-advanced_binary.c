@@ -21,9 +21,41 @@ void print_array(int *array, int start, int end)
 	printf("\n");
 
 }
+/**
+ * recur - recursive binary search
+ * @array: input array
+ * @size: size of array
+ * @value: value to search for
+ * @first: starting search index
+ * @last: ending search index
+ * Return: index of first occurance of value, or -1 if not found
+ */
+int recur(int *array, size_t size, int value, int first, int last)
+{
+	int middle;
+
+	if (first <= last)
+	{
+		middle = (first + last) / 2;
+
+		print_array(array, first, last);
+
+		if (array[middle] < value)
+			return (recur(array, size, value, middle + 1, last));
+		else if (array[middle] > value)
+			return (recur(array, size, value, first, middle - 1));
+		else if (array[middle] == value)
+		{
+			if (array[middle - 1] == value)
+				return (recur(array, size, value, first, middle));
+			return (middle);
+		}
+	}
+	return (-1);
+}
 
 /**
- * advanced_binary - uses binary search to find value in array
+ * advanced_binary - entry point
  * @array: array to search
  * @size: size of array
  * @value: value to search for
@@ -31,29 +63,7 @@ void print_array(int *array, int start, int end)
  */
 int advanced_binary(int *array, size_t size, int value)
 {
-	int first, middle, last;
-
-	first = 0;
-	last = (int) size - 1;
-	middle = (first + last) / 2;
-
-	if (array == NULL)
+	if (!array)
 		return (-1);
-	while (first <= last)
-	{
-		print_array(array, first, last);
-		if (array[middle] < value)
-			first = middle + 1;
-		else
-			last = middle - 1;
-		if (array[middle] == value)
-		{
-			if (array[middle - 1] == value)
-				last = middle;
-			else
-				return (middle);
-		}
-		middle = (first + last) / 2;
-	}
-	return (-1);
+	return (recur(array, size, value, 0, size - 1));
 }
