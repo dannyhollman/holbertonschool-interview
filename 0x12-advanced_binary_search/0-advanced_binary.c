@@ -43,7 +43,7 @@ int recur(int *array, size_t size, int value, int first, int last)
 		if (array[middle] < value)
 			return (recur(array, size, value, middle + 1, last));
 		else if (array[middle] > value)
-			return (recur(array, size, value, first, middle - 1));
+			return (recur(array, size, value, first, middle));
 		else if (array[middle] == value)
 		{
 			if (array[middle - 1] == value)
